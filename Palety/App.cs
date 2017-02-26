@@ -68,7 +68,7 @@ namespace Palety
 
         private void paletaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PaletaV nazwa = new PaletaV(dc, this);
+            PaletaV nazwa = new PaletaV();
             nazwa.Show();
         }
 
