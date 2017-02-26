@@ -1,0 +1,9 @@
+C:\Users\Łukasz\Desktop\palety\Palety\Palety\bin\Release\Palety.exe.config
+C:\Users\Łukasz\Desktop\palety\Palety\Palety\obj\Release\Palety.App.resources
+C:\Users\Łukasz\Desktop\palety\Palety\Palety\obj\Release\Palety.Properties.Resources.resources
+C:\Users\Łukasz\Desktop\palety\Palety\Palety\obj\Release\Palety.Views.FirmaMV.resources
+C:\Users\Łukasz\Desktop\palety\Palety\Palety\obj\Release\Palety.Views.FirmaV.resources
+C:\Users\Łukasz\Desktop\palety\Palety\Palety\obj\Release\Palety.Views.PaletaMV.resources
+C:\Users\Łukasz\Desktop\palety\Palety\Palety\obj\Release\Palety.Views.PaletaV.resources
+C:\Users\Łukasz\Desktop\palety\Palety\Palety\obj\Release\Palety.Views.WydarzenieMV.resources
+C:\Users\Łukasz\Desktop\palety\Palety\Palety\obj\Release\Palety.csproj.GenerateResource.Cache
