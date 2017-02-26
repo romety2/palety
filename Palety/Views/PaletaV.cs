@@ -126,7 +126,7 @@ namespace Palety.Views
                     zapisano = false;
                     dc.DeletePaleta((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value);
                     dataGridView1.Rows.RemoveAt(dataGridView1.CurrentCellAddress.Y);
-                    app.refreshData();
+                    //app.refreshData();
                 }
             }
         }

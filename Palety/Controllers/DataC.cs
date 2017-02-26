@@ -48,7 +48,6 @@ namespace Palety.Controllers
         public BindingList<Firma> AddFirma(string nazwa)
         {
             data.Firmy.Add(new Firma(idF, nazwa));
-
             idF++;
             return getData().Firmy;
         }
@@ -66,6 +65,13 @@ namespace Palety.Controllers
         {
             data.Wydarzenia.Add(new Wydarzenie(idW, date, mpalety, firma, uwagi));
             idW++;
+            return getData().Wydarzenia;
+        }
+
+
+        public BindingList<Wydarzenie> AddWydarzenieMP(ulong id, Paleta paleta)
+        {
+            data.Wydarzenia[data.Wydarzenia.IndexOf(data.Wydarzenia.First(o => o.Id == id))].MPalety.Add(new Wydarzenie.MojePalety(paleta, 0, 0));
             return getData().Wydarzenia;
         }
 
@@ -88,12 +94,6 @@ namespace Palety.Controllers
             data.Wydarzenia[data.Wydarzenia.IndexOf(data.Wydarzenia.First(o => o.Id == id))].MPalety = mpalety;
             data.Wydarzenia[data.Wydarzenia.IndexOf(data.Wydarzenia.First(o => o.Id == id))].Firma = firma;
             data.Wydarzenia[data.Wydarzenia.IndexOf(data.Wydarzenia.First(o => o.Id == id))].Uwagi = uwagi;
-            return getData().Wydarzenia;
-        }
-
-        public BindingList<Wydarzenie> AddWydarzenieMP(ulong id, Paleta paleta)
-        {
-            data.Wydarzenia[data.Wydarzenia.IndexOf(data.Wydarzenia.First(o => o.Id == id))].MPalety.Add(new Wydarzenie.MojePalety(paleta, 0,0));
             return getData().Wydarzenia;
         }
 

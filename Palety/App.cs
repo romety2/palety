@@ -62,7 +62,7 @@ namespace Palety
 
         private void firmaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FirmaV nazwa = new FirmaV(dc);
+            FirmaV nazwa = new FirmaV();
             nazwa.Show();
         }
 

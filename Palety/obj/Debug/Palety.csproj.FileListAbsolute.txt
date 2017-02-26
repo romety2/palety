@@ -1,14 +1,14 @@
-C:\Users\Łukasz\Desktop\palety\Palety\Palety\bin\Debug\Palety.exe.config
-C:\Users\Łukasz\Desktop\palety\Palety\Palety\bin\Debug\Palety.exe
-C:\Users\Łukasz\Desktop\palety\Palety\Palety\bin\Debug\Palety.pdb
-C:\Users\Łukasz\Desktop\palety\Palety\Palety\obj\Debug\Palety.csprojResolveAssemblyReference.cache
-C:\Users\Łukasz\Desktop\palety\Palety\Palety\obj\Debug\Palety.App.resources
-C:\Users\Łukasz\Desktop\palety\Palety\Palety\obj\Debug\Palety.Properties.Resources.resources
-C:\Users\Łukasz\Desktop\palety\Palety\Palety\obj\Debug\Palety.csproj.GenerateResource.Cache
-C:\Users\Łukasz\Desktop\palety\Palety\Palety\obj\Debug\Palety.exe
-C:\Users\Łukasz\Desktop\palety\Palety\Palety\obj\Debug\Palety.pdb
-C:\Users\Łukasz\Desktop\palety\Palety\Palety\obj\Debug\Palety.Views.FirmaV.resources
-C:\Users\Łukasz\Desktop\palety\Palety\Palety\obj\Debug\Palety.Views.PaletaV.resources
-C:\Users\Łukasz\Desktop\palety\Palety\Palety\obj\Debug\Palety.Views.FirmaMV.resources
-C:\Users\Łukasz\Desktop\palety\Palety\Palety\obj\Debug\Palety.Views.PaletaMV.resources
-C:\Users\Łukasz\Desktop\palety\Palety\Palety\obj\Debug\Palety.Views.WydarzenieMV.resources
+C:\Users\Łukasz\Desktop\palety — kopia\Palety\Palety\bin\Debug\Palety.exe.config
+C:\Users\Łukasz\Desktop\palety — kopia\Palety\Palety\obj\Debug\Palety.csprojResolveAssemblyReference.cache
+C:\Users\Łukasz\Desktop\palety — kopia\Palety\Palety\obj\Debug\Palety.App.resources
+C:\Users\Łukasz\Desktop\palety — kopia\Palety\Palety\obj\Debug\Palety.Properties.Resources.resources
+C:\Users\Łukasz\Desktop\palety — kopia\Palety\Palety\obj\Debug\Palety.csproj.GenerateResource.Cache
+C:\Users\Łukasz\Desktop\palety — kopia\Palety\Palety\obj\Debug\Palety.Views.FirmaMV.resources
+C:\Users\Łukasz\Desktop\palety — kopia\Palety\Palety\obj\Debug\Palety.Views.FirmaV.resources
+C:\Users\Łukasz\Desktop\palety — kopia\Palety\Palety\obj\Debug\Palety.Views.PaletaMV.resources
+C:\Users\Łukasz\Desktop\palety — kopia\Palety\Palety\obj\Debug\Palety.Views.PaletaV.resources
+C:\Users\Łukasz\Desktop\palety — kopia\Palety\Palety\obj\Debug\Palety.Views.WydarzenieMV.resources
+C:\Users\Łukasz\Desktop\palety — kopia\Palety\Palety\bin\Debug\Palety.exe
+C:\Users\Łukasz\Desktop\palety — kopia\Palety\Palety\bin\Debug\Palety.pdb
+C:\Users\Łukasz\Desktop\palety — kopia\Palety\Palety\obj\Debug\Palety.exe
+C:\Users\Łukasz\Desktop\palety — kopia\Palety\Palety\obj\Debug\Palety.pdb

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7D27CD49-4564-4A0A-B0F2-E2B1F8AA8EC7}</ProjectGuid>
+    <ProjectGuid>{9CD2CEDE-6CCB-45CA-9017-1E9424177A5F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Palety</RootNamespace>
@@ -71,12 +71,6 @@
     <Compile Include="Views\FirmaV.Designer.cs">
       <DependentUpon>FirmaV.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\WydarzenieMV.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\WydarzenieMV.Designer.cs">
-      <DependentUpon>WydarzenieMV.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\PaletaMV.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +82,12 @@
     </Compile>
     <Compile Include="Views\PaletaV.Designer.cs">
       <DependentUpon>PaletaV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WydarzenieMV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\WydarzenieMV.Designer.cs">
+      <DependentUpon>WydarzenieMV.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="App.resx">
       <DependentUpon>App.cs</DependentUpon>
