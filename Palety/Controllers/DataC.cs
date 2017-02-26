@@ -45,6 +45,17 @@ namespace Palety.Controllers
             }
         }
 
+        public DataC(Data data)
+        {
+            this.data = data;
+            if (data.Firmy.Count != 0)
+                idF = data.Firmy[data.Firmy.Count - 1].Id + 1;
+            if (data.Palety.Count != 0)
+                idP = data.Palety[data.Palety.Count - 1].Id + 1;
+            if (data.Wydarzenia.Count != 0)
+                idW = data.Wydarzenia[data.Wydarzenia.Count - 1].Id + 1;
+        }
+
         public BindingList<Firma> AddFirma(string nazwa)
         {
             data.Firmy.Add(new Firma(idF, nazwa));

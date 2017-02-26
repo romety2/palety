@@ -58,7 +58,8 @@ namespace Palety.Views
             if (dodawanie)
             {
                 palety = data.Palety.OrderBy(o => o.Nazwa).ToList();
-                //palety.ToLookup(p => mpalety.Add(new Wydarzenie.MojePalety(p, 0, 0)));
+                foreach (Paleta p in palety)
+                    mpalety.Add(new Wydarzenie.MojePalety(p, 0, 0));
                 comboBox2.DataSource = palety;
                 comboBox2.DisplayMember = "Nazwa";
                 if (comboBox1.Items.Count != 0)

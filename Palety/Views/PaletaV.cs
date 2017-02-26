@@ -29,16 +29,24 @@ namespace Palety.Views
             zapisano = true;
         }
 
-        public PaletaV(DataC dc)
+        public PaletaV(Data data)
         {
-            this.dc = dc;
+            this.dc = new DataC(data);
             InitializeComponent();
             zapisano = true;
         }
 
-        public PaletaV(DataC dc, App app)
+        public PaletaV(App app)
         {
-            this.dc = dc;
+            dc = new DataC();
+            this.app = app;
+            InitializeComponent();
+            zapisano = true;
+        }
+
+        public PaletaV(Data data, App app)
+        {
+            this.dc = new DataC(data);
             this.app = app;
             InitializeComponent();
             zapisano = true;
@@ -136,6 +144,7 @@ namespace Palety.Views
             label4.Text = "Zapisano zmiany!";
             zapisano = true;
             dc.SaveData();
+            app.refreshDC();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -175,6 +184,7 @@ namespace Palety.Views
                 {
                     zapisano = true;
                     dc.SaveData();
+                    app.refreshDC();
                 }
                 else if (dr == DialogResult.Cancel)
                     e.Cancel = true;

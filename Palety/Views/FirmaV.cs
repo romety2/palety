@@ -16,6 +16,7 @@ namespace Palety.Views
 {
     public partial class FirmaV : Form
     {
+        private App app;
         private DataC dc;
         private Data data;
         private FirmaMV fmv;
@@ -28,9 +29,25 @@ namespace Palety.Views
             zapisano = true;
         }
 
-        public FirmaV(DataC dc)
+        public FirmaV(Data data)
         {
-            this.dc = dc;
+            this.dc = new DataC(data);
+            InitializeComponent();
+            zapisano = true;
+        }
+
+        public FirmaV(App app)
+        {
+            dc = new DataC();
+            this.app = app;
+            InitializeComponent();
+            zapisano = true;
+        }
+
+        public FirmaV(Data data, App app)
+        {
+            this.dc = new DataC(data);
+            this.app = app;
             InitializeComponent();
             zapisano = true;
         }
@@ -125,6 +142,7 @@ namespace Palety.Views
             label4.Text = "Zapisano zmiany!";
             zapisano = true;
             dc.SaveData();
+            app.refreshDC();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -164,6 +182,7 @@ namespace Palety.Views
                 {
                     zapisano = true;
                     dc.SaveData();
+                    app.refreshDC();
                 }
                 else if (dr == DialogResult.Cancel)
                     e.Cancel = true;

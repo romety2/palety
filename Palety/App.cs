@@ -62,13 +62,13 @@ namespace Palety
 
         private void firmaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FirmaV nazwa = new FirmaV();
+            FirmaV nazwa = new FirmaV(data, this);
             nazwa.Show();
         }
 
         private void paletaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PaletaV nazwa = new PaletaV();
+            PaletaV nazwa = new PaletaV(data, this);
             nazwa.Show();
         }
 
@@ -102,6 +102,11 @@ namespace Palety
         public void deleteSmallWindow()
         {
             wmv = null;
+        }
+
+        public void refreshDC()
+        {
+            dc = new DataC();
         }
 
         /*public void refreshData()
