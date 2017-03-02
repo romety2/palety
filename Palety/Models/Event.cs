@@ -5,17 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Palety.Models
+namespace Pallets.Models
 {
     [Serializable]
-    public class Wydarzenie
+    public class Event
     {
-        public Wydarzenie()
+        public Event()
         {
 
         }
 
-        public Wydarzenie(ulong id, string data, BindingList<MojePalety> palety, Firma firma, string uwagi)
+        public Event(ulong id, string data, BindingList<MojePalety> palety, Company firma, string uwagi)
         {
             Id = id;
             Data = data;
@@ -27,15 +27,15 @@ namespace Palety.Models
         [Serializable]
         public struct MojePalety
         {
-            private Paleta paleta;
+            private Palette paleta;
             private int plus;
             private int minus;
 
-            public Paleta Paleta { get; set; }
+            public Palette Paleta { get; set; }
             public int Plus { get; set; }
             public int Minus { get; set; }
 
-            public MojePalety(Paleta paleta, int plus, int minus) : this()
+            public MojePalety(Palette paleta, int plus, int minus) : this()
             {
                 Paleta = paleta;
                 Plus = plus;
@@ -44,13 +44,13 @@ namespace Palety.Models
         }
 
         ulong id;
-        Firma firma;
+        Company firma;
         BindingList<MojePalety> palety;
         string data;
         string uwagi;
 
         public ulong Id { get; set; }
-        public Firma Firma { get; set; }
+        public Company Firma { get; set; }
         public string Data { get; set; }
         public string WyswietlNazweFirme
         {

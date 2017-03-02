@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Palety.Models;
+using Pallets.Models;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System.ComponentModel;
 
-namespace Palety.Controllers
+namespace Pallets.Controllers
 {
     public class DataC
     {
@@ -56,50 +56,50 @@ namespace Palety.Controllers
                 idW = data.Wydarzenia[data.Wydarzenia.Count - 1].Id + 1;
         }
 
-        public BindingList<Firma> AddFirma(string nazwa)
+        public BindingList<Company> AddFirma(string nazwa)
         {
-            data.Firmy.Add(new Firma(idF, nazwa));
+            data.Firmy.Add(new Company(idF, nazwa));
             idF++;
             return getData().Firmy;
         }
 
-        public BindingList<Paleta> AddPaleta(string nazwa, int ilosc)
+        public BindingList<Palette> AddPaleta(string nazwa, int ilosc)
         {
-            Paleta paleta = new Paleta(idP, nazwa, ilosc);
+            Palette paleta = new Palette(idP, nazwa, ilosc);
             data.Palety.Add(paleta);
             data.Wydarzenia.ToLookup(w => AddWydarzenieMP(w.Id, paleta));
             idP++;
             return getData().Palety;
         }
 
-        public BindingList<Wydarzenie> AddWydarzenie(string date, BindingList<Wydarzenie.MojePalety> mpalety, Firma firma, string uwagi)
+        public BindingList<Event> AddWydarzenie(string date, BindingList<Event.MojePalety> mpalety, Company firma, string uwagi)
         {
-            data.Wydarzenia.Add(new Wydarzenie(idW, date, mpalety, firma, uwagi));
+            data.Wydarzenia.Add(new Event(idW, date, mpalety, firma, uwagi));
             idW++;
             return getData().Wydarzenia;
         }
 
 
-        public BindingList<Wydarzenie> AddWydarzenieMP(ulong id, Paleta paleta)
+        public BindingList<Event> AddWydarzenieMP(ulong id, Palette paleta)
         {
-            data.Wydarzenia[data.Wydarzenia.IndexOf(data.Wydarzenia.First(o => o.Id == id))].MPalety.Add(new Wydarzenie.MojePalety(paleta, 0, 0));
+            data.Wydarzenia[data.Wydarzenia.IndexOf(data.Wydarzenia.First(o => o.Id == id))].MPalety.Add(new Event.MojePalety(paleta, 0, 0));
             return getData().Wydarzenia;
         }
 
-        public BindingList<Firma> EditFirma(ulong id, string nazwa)
+        public BindingList<Company> EditFirma(ulong id, string nazwa)
         {
             data.Firmy[data.Firmy.IndexOf(data.Firmy.First(o => o.Id == id))].Nazwa = nazwa;
             return getData().Firmy;
         }
 
-        public BindingList<Paleta> EditPaleta(ulong id, string nazwa, int ilosc)
+        public BindingList<Palette> EditPaleta(ulong id, string nazwa, int ilosc)
         {
             data.Palety[data.Palety.IndexOf(data.Palety.First(o => o.Id == id))].Nazwa = nazwa;
             data.Palety[data.Palety.IndexOf(data.Palety.First(o => o.Id == id))].Ilosc = ilosc;
             return getData().Palety;
         }
 
-        public BindingList<Wydarzenie> EditWydarzenie(ulong id, string data2, BindingList<Wydarzenie.MojePalety> mpalety, Firma firma, string uwagi)
+        public BindingList<Event> EditWydarzenie(ulong id, string data2, BindingList<Event.MojePalety> mpalety, Company firma, string uwagi)
         {
             data.Wydarzenia[data.Wydarzenia.IndexOf(data.Wydarzenia.First(o => o.Id == id))].Data = data2;
             data.Wydarzenia[data.Wydarzenia.IndexOf(data.Wydarzenia.First(o => o.Id == id))].MPalety = mpalety;
@@ -108,27 +108,27 @@ namespace Palety.Controllers
             return getData().Wydarzenia;
         }
 
-        public BindingList<Wydarzenie> EditWydarzenieMP(ulong id, BindingList<Wydarzenie.MojePalety> mpalety)
+        public BindingList<Event> EditWydarzenieMP(ulong id, BindingList<Event.MojePalety> mpalety)
         {
             data.Wydarzenia[data.Wydarzenia.IndexOf(data.Wydarzenia.First(o => o.Id == id))].MPalety = mpalety;
             return getData().Wydarzenia;
         }
 
-        public BindingList<Firma> DeleteFirma(ulong id)
+        public BindingList<Company> DeleteFirma(ulong id)
         {
             data.Firmy.Remove(data.Firmy.First(o => o.Id == id));
             return getData().Firmy;
         }
 
-        public BindingList<Paleta> DeletePaleta(ulong id)
+        public BindingList<Palette> DeletePaleta(ulong id)
         {
-            Paleta paleta = data.Palety.First(o => o.Id == id);
+            Palette paleta = data.Palety.First(o => o.Id == id);
             data.Wydarzenia.ToLookup(w => w.MPalety.Remove(w.MPalety.First(p => String.ReferenceEquals(p.Paleta.Nazwa, paleta.Nazwa))));
             data.Palety.Remove(paleta);
             return getData().Palety;
         }
 
-        public BindingList<Wydarzenie> DeleteWydarzenie(ulong id)
+        public BindingList<Event> DeleteWydarzenie(ulong id)
         {
             data.Wydarzenia.Remove(data.Wydarzenia.First(o => o.Id == id));
             return getData().Wydarzenia;

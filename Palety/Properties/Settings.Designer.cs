@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Palety.Properties
+namespace Pallets.Properties
 {
 
 

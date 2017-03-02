@@ -54,40 +54,40 @@
     </Compile>
     <Compile Include="Controllers\DataC.cs" />
     <Compile Include="Models\Data.cs" />
-    <Compile Include="Models\Firma.cs" />
-    <Compile Include="Models\Paleta.cs" />
-    <Compile Include="Models\Wydarzenie.cs" />
+    <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\Palette.cs" />
+    <Compile Include="Models\Event.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\FirmaMV.cs">
+    <Compile Include="Views\CompanyMV.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FirmaMV.Designer.cs">
-      <DependentUpon>FirmaMV.cs</DependentUpon>
+    <Compile Include="Views\CompanyMV.Designer.cs">
+      <DependentUpon>CompanyMV.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FirmaV.cs">
+    <Compile Include="Views\CompanyV.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FirmaV.Designer.cs">
-      <DependentUpon>FirmaV.cs</DependentUpon>
+    <Compile Include="Views\CompanyV.Designer.cs">
+      <DependentUpon>CompanyV.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\PaletaMV.cs">
+    <Compile Include="Views\PaletteMV.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\PaletaMV.Designer.cs">
-      <DependentUpon>PaletaMV.cs</DependentUpon>
+    <Compile Include="Views\PaletteMV.Designer.cs">
+      <DependentUpon>PaletteMV.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\PaletaV.cs">
+    <Compile Include="Views\PaletteV.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\PaletaV.Designer.cs">
-      <DependentUpon>PaletaV.cs</DependentUpon>
+    <Compile Include="Views\PaletteV.Designer.cs">
+      <DependentUpon>PaletteV.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\WydarzenieMV.cs">
+    <Compile Include="Views\EventMV.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\WydarzenieMV.Designer.cs">
-      <DependentUpon>WydarzenieMV.cs</DependentUpon>
+    <Compile Include="Views\EventMV.Designer.cs">
+      <DependentUpon>EventMV.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="App.resx">
       <DependentUpon>App.cs</DependentUpon>
@@ -101,20 +101,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Views\FirmaMV.resx">
-      <DependentUpon>FirmaMV.cs</DependentUpon>
+    <EmbeddedResource Include="Views\CompanyMV.resx">
+      <DependentUpon>CompanyMV.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FirmaV.resx">
-      <DependentUpon>FirmaV.cs</DependentUpon>
+    <EmbeddedResource Include="Views\CompanyV.resx">
+      <DependentUpon>CompanyV.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\PaletaMV.resx">
-      <DependentUpon>PaletaMV.cs</DependentUpon>
+    <EmbeddedResource Include="Views\PaletteMV.resx">
+      <DependentUpon>PaletteMV.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\PaletaV.resx">
-      <DependentUpon>PaletaV.cs</DependentUpon>
+    <EmbeddedResource Include="Views\PaletteV.resx">
+      <DependentUpon>PaletteV.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\WydarzenieMV.resx">
-      <DependentUpon>WydarzenieMV.cs</DependentUpon>
+    <EmbeddedResource Include="Views\EventMV.resx">
+      <DependentUpon>EventMV.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

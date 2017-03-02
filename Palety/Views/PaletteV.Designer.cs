@@ -1,6 +1,6 @@
-﻿namespace Palety.Views
+﻿namespace Pallets.Views
 {
-    partial class PaletaV
+    partial class PaletteV
     {
         /// <summary>
         /// Required designer variable.

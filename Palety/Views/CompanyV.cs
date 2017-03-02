@@ -7,36 +7,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Palety.Controllers;
-using Palety.Models;
+using Pallets.Controllers;
+using Pallets.Models;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
-namespace Palety.Views
+namespace Pallets.Views
 {
-    public partial class FirmaV : Form
+    public partial class CompanyV : Form
     {
         private App app;
         private DataC dc;
         private Data data;
-        private FirmaMV fmv;
+        private CompanyMV fmv;
         public bool zapisano;
 
-        public FirmaV()
+        public CompanyV()
         {
             dc = new DataC();
             InitializeComponent();
             zapisano = true;
         }
 
-        public FirmaV(Data data)
+        public CompanyV(Data data)
         {
             this.dc = new DataC(data);
             InitializeComponent();
             zapisano = true;
         }
 
-        public FirmaV(App app)
+        public CompanyV(App app)
         {
             dc = new DataC();
             this.app = app;
@@ -44,7 +44,7 @@ namespace Palety.Views
             zapisano = true;
         }
 
-        public FirmaV(Data data, App app)
+        public CompanyV(Data data, App app)
         {
             this.dc = new DataC(data);
             this.app = app;
@@ -52,7 +52,7 @@ namespace Palety.Views
             zapisano = true;
         }
 
-        private BindingList<Firma> getFirmy()
+        private BindingList<Company> getFirmy()
         {
             data = dc.getData();
             return data.Firmy;
@@ -104,7 +104,7 @@ namespace Palety.Views
         {
             if (fmv == null)
             {
-                fmv = new FirmaMV(this);
+                fmv = new CompanyMV(this);
                 fmv.Text = "Dodaj firmę";
                 fmv.Show();
             }
@@ -114,7 +114,7 @@ namespace Palety.Views
         {
             if (fmv == null && dataGridView1.Rows.Count != 0)
             {
-                fmv = new FirmaMV(this, dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value.ToString());
+                fmv = new CompanyMV(this, dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value.ToString());
                 fmv.Text = "Zmień nazwę firmy";
                 fmv.Show();
             }

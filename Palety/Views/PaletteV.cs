@@ -7,36 +7,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Palety.Controllers;
-using Palety.Models;
+using Pallets.Controllers;
+using Pallets.Models;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
-namespace Palety.Views
+namespace Pallets.Views
 {
-    public partial class PaletaV : Form
+    public partial class PaletteV : Form
     {
         private App app;
         private DataC dc;
         private Data data;
-        private PaletaMV pmv;
+        private PaletteMV pmv;
         public bool zapisano;
 
-        public PaletaV()
+        public PaletteV()
         {
             dc = new DataC();
             InitializeComponent();
             zapisano = true;
         }
 
-        public PaletaV(Data data)
+        public PaletteV(Data data)
         {
             this.dc = new DataC(data);
             InitializeComponent();
             zapisano = true;
         }
 
-        public PaletaV(App app)
+        public PaletteV(App app)
         {
             dc = new DataC();
             this.app = app;
@@ -44,7 +44,7 @@ namespace Palety.Views
             zapisano = true;
         }
 
-        public PaletaV(Data data, App app)
+        public PaletteV(Data data, App app)
         {
             this.dc = new DataC(data);
             this.app = app;
@@ -52,7 +52,7 @@ namespace Palety.Views
             zapisano = true;
         }
 
-        private BindingList<Paleta> getPalety()
+        private BindingList<Palette> getPalety()
         {
             data = dc.getData();
             return data.Palety;
@@ -106,7 +106,7 @@ namespace Palety.Views
         {
             if (pmv == null)
             {
-                pmv = new PaletaMV(this);
+                pmv = new PaletteMV(this);
                 pmv.Text = "Dodaj paletę";
                 pmv.Show();
             }
@@ -116,7 +116,7 @@ namespace Palety.Views
         {
             if (pmv == null && dataGridView1.Rows.Count != 0)
             {
-                pmv = new PaletaMV(this, dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value.ToString(), dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[2].Value.ToString());
+                pmv = new PaletteMV(this, dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value.ToString(), dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[2].Value.ToString());
                 pmv.Text = "Zmień dane palety";
                 pmv.Show();
             }

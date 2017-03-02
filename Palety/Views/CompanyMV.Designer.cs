@@ -1,6 +1,6 @@
-﻿namespace Palety.Views
+﻿namespace Pallets.Views
 {
-    partial class FirmaMV
+    partial class CompanyMV
     {
         /// <summary>
         /// Required designer variable.

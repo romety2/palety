@@ -5,35 +5,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Palety.Models
+namespace Pallets.Models
 {
     [Serializable]
     public class Data
     {
-        private BindingList<Firma> firmy;
-        private BindingList<Paleta> palety;
-        private BindingList<Wydarzenie> wydarzenia;
+        private BindingList<Company> firmy;
+        private BindingList<Palette> palety;
+        private BindingList<Event> wydarzenia;
 
         public Data()
         {
-            firmy = new BindingList<Firma>();
-            palety = new BindingList<Paleta>();
-            wydarzenia = new BindingList<Wydarzenie>();
+            firmy = new BindingList<Company>();
+            palety = new BindingList<Palette>();
+            wydarzenia = new BindingList<Event>();
         }
 
-        public BindingList<Firma> Firmy
+        public BindingList<Company> Firmy
         {
             get { return firmy; }
             set { firmy = value; }
         }
 
-        public BindingList<Paleta> Palety
+        public BindingList<Palette> Palety
         {
             get { return palety; }
             set { palety = value; }
         }
 
-        public BindingList<Wydarzenie> Wydarzenia
+        public BindingList<Event> Wydarzenia
         {
             get { return wydarzenia; }
             set { wydarzenia = value; }

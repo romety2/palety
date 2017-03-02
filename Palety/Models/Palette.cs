@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Palety.Models
+namespace Pallets.Models
 {
     [Serializable]
-    public class Paleta
+    public class Palette
     {
-        public Paleta()
+        public Palette()
         {
 
         }
 
-        public Paleta(ulong id, string nazwa, int ilosc)
+        public Palette(ulong id, string nazwa, int ilosc)
         {
             Id = id;
             Nazwa = nazwa;

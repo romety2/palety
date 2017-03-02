@@ -8,27 +8,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Palety.Views
+namespace Pallets.Views
 {
-    public partial class PaletaMV : Form
+    public partial class PaletteMV : Form
     {
 
-        private PaletaV p;
+        private PaletteV p;
         private bool dodawanie;
 
-        public PaletaMV()
+        public PaletteMV()
         {
             InitializeComponent();
         }
 
-        public PaletaMV(PaletaV p)
+        public PaletteMV(PaletteV p)
         {
             this.p = p;
             dodawanie = true;
             InitializeComponent();
         }
 
-        public PaletaMV(PaletaV p, string nazwa, string ilosc)
+        public PaletteMV(PaletteV p, string nazwa, string ilosc)
         {
             this.p = p;
             dodawanie = false;

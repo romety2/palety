@@ -1,5 +1,5 @@
-﻿using Palety.Controllers;
-using Palety.Models;
+﻿using Pallets.Controllers;
+using Pallets.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,40 +10,40 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Palety.Views
+namespace Pallets.Views
 {
-    public partial class WydarzenieMV : Form
+    public partial class EventMV : Form
     {
         private App a;
         private DataC dc;
         private Data data;
-        private List<Firma> firmy;
-        private List<Paleta> palety;
-        private BindingList<Wydarzenie.MojePalety> mpalety;
+        private List<Company> firmy;
+        private List<Palette> palety;
+        private BindingList<Event.MojePalety> mpalety;
         private bool dodawanie;
         private string eid;
 
-        public WydarzenieMV()
+        public EventMV()
         {
             dc = new DataC();
-            mpalety = new BindingList<Wydarzenie.MojePalety>();
+            mpalety = new BindingList<Event.MojePalety>();
             InitializeComponent();
         }
 
-        public WydarzenieMV(App a, DataC dc)
+        public EventMV(App a, DataC dc)
         {
             this.a = a;
             this.dc = dc;
-            mpalety = new BindingList<Wydarzenie.MojePalety>();
+            mpalety = new BindingList<Event.MojePalety>();
             dodawanie = true;
             InitializeComponent();
         }
 
-        public WydarzenieMV(App a, string id, DataC dc)
+        public EventMV(App a, string id, DataC dc)
         {
             this.a = a;
             this.dc = dc;
-            mpalety = new BindingList<Wydarzenie.MojePalety>();
+            mpalety = new BindingList<Event.MojePalety>();
             dodawanie = false;
             InitializeComponent();
             eid = id;
@@ -58,8 +58,8 @@ namespace Palety.Views
             if (dodawanie)
             {
                 palety = data.Palety.OrderBy(o => o.Nazwa).ToList();
-                foreach (Paleta p in palety)
-                    mpalety.Add(new Wydarzenie.MojePalety(p, 0, 0));
+                foreach (Palette p in palety)
+                    mpalety.Add(new Event.MojePalety(p, 0, 0));
                 comboBox2.DataSource = palety;
                 comboBox2.DisplayMember = "Nazwa";
                 if (comboBox1.Items.Count != 0)
@@ -73,7 +73,7 @@ namespace Palety.Views
             }
             else
             {
-                Wydarzenie w = data.Wydarzenia.First(o => o.Id.ToString() == eid);
+                Event w = data.Wydarzenia.First(o => o.Id.ToString() == eid);
                 dateTimePicker1.Text = w.Data;
                 if (comboBox1.Items.Count != 0)
                     comboBox1.SelectedIndex = comboBox1.FindString(w.Firma.Nazwa);
@@ -158,19 +158,19 @@ namespace Palety.Views
         {
             int i = mpalety.IndexOf(mpalety.First(o => o.Paleta.Id == palety[comboBox2.SelectedIndex].Id));
             if (textBox3.Text != "")
-                mpalety[i] = new Wydarzenie.MojePalety(mpalety[i].Paleta, Int32.Parse(textBox3.Text), mpalety[i].Minus);
+                mpalety[i] = new Event.MojePalety(mpalety[i].Paleta, Int32.Parse(textBox3.Text), mpalety[i].Minus);
         }
 
         private void textBox4_Leave(object sender, EventArgs e)
         {
             int i = mpalety.IndexOf(mpalety.First(o => o.Paleta.Id == palety[comboBox2.SelectedIndex].Id));
             if(textBox4.Text != "")
-                mpalety[i] = new Wydarzenie.MojePalety(mpalety[i].Paleta, mpalety[i].Plus, Int32.Parse(textBox4.Text));
+                mpalety[i] = new Event.MojePalety(mpalety[i].Paleta, mpalety[i].Plus, Int32.Parse(textBox4.Text));
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Wydarzenie.MojePalety mp = mpalety.First(o => o.Paleta.Id == palety[comboBox2.SelectedIndex].Id);
+            Event.MojePalety mp = mpalety.First(o => o.Paleta.Id == palety[comboBox2.SelectedIndex].Id);
             textBox3.Text = mp.Plus.ToString();
             textBox4.Text = mp.Minus.ToString();
         }

@@ -7,18 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Palety.Views;
-using Palety.Models;
-using Palety.Controllers;
+using Pallets.Views;
+using Pallets.Models;
+using Pallets.Controllers;
 
-namespace Palety
+namespace Pallets
 {
 
     public partial class App : Form
     {
         private DataC dc;
         private Data data;
-        private WydarzenieMV wmv;
+        private EventMV wmv;
         public bool zapisano;
 
         public App()
@@ -28,7 +28,7 @@ namespace Palety
             zapisano = true;
         }
 
-        private BindingList<Wydarzenie> getWydarzenia()
+        private BindingList<Event> getWydarzenia()
         {
             data = dc.getData();
             return data.Wydarzenia;
@@ -62,17 +62,17 @@ namespace Palety
 
         private void firmaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FirmaV nazwa = new FirmaV(data, this);
+            CompanyV nazwa = new CompanyV(data, this);
             nazwa.Show();
         }
 
         private void paletaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PaletaV nazwa = new PaletaV(data, this);
+            PaletteV nazwa = new PaletteV(data, this);
             nazwa.Show();
         }
 
-        public void addData(string data2, BindingList<Wydarzenie.MojePalety> mpalety, Firma firma, string uwagi)
+        public void addData(string data2, BindingList<Event.MojePalety> mpalety, Company firma, string uwagi)
         {
             int id;
             if (dataGridView1.Rows.Count != 0 && String.Compare(data2, dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[2].Value.ToString(), true) < 0)
@@ -89,7 +89,7 @@ namespace Palety
                 textBox1.Text = "";
         }
 
-        public void editData(string data2, BindingList<Wydarzenie.MojePalety> mpalety, Firma firma, string uwagi)
+        public void editData(string data2, BindingList<Event.MojePalety> mpalety, Company firma, string uwagi)
         {
             zapisano = false;
             //dc.EditFirma((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value,  data2, mpalety, firma, uwagi");
@@ -118,7 +118,7 @@ namespace Palety
         {
             if (wmv == null)
             {
-                wmv = new WydarzenieMV(this, dc);
+                wmv = new EventMV(this, dc);
                 wmv.Text = "Dodaj";
                 wmv.Show();
             }
@@ -128,7 +128,7 @@ namespace Palety
         {
             if (wmv == null && dataGridView1.Rows.Count != 0)
             {
-                wmv = new WydarzenieMV(this, dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value.ToString(), dc);
+                wmv = new EventMV(this, dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value.ToString(), dc);
                 wmv.Text = "Edytuj";
                 wmv.Show();
             }

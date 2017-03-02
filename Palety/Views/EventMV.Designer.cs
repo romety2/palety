@@ -1,6 +1,6 @@
-﻿namespace Palety.Views
+﻿namespace Pallets.Views
 {
-    partial class WydarzenieMV
+    partial class EventMV
     {
         /// <summary>
         /// Required designer variable.

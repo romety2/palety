@@ -8,26 +8,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Palety.Views
+namespace Pallets.Views
 {
-    public partial class FirmaMV : Form
+    public partial class CompanyMV : Form
     {
-        private FirmaV f;
+        private CompanyV f;
         private bool dodawanie;
 
-        public FirmaMV()
+        public CompanyMV()
         {
             InitializeComponent();
         }
 
-        public FirmaMV(FirmaV f)
+        public CompanyMV(CompanyV f)
         {
             this.f = f;
             dodawanie = true;
             InitializeComponent();
         }
 
-        public FirmaMV(FirmaV f, string nazwa)
+        public CompanyMV(CompanyV f, string nazwa)
         {
             this.f = f;
             dodawanie = false;

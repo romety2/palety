@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Palety.Models
+namespace Pallets.Models
 {
     [Serializable]
-    public class Firma
+    public class Company
     {
-        public Firma()
+        public Company()
         {
 
         }
 
-        public Firma(ulong id, string nazwa)
+        public Company(ulong id, string nazwa)
         {
             Id = id;
             Nazwa = nazwa;

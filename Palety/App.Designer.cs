@@ -1,4 +1,4 @@
-﻿namespace Palety
+﻿namespace Pallets
 {
     partial class App
     {
