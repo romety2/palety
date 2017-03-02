@@ -31,7 +31,7 @@ namespace Pallets.Views
 
         public CompanyV(Data data)
         {
-            dc = new DataC(data);
+            dc = new DataC(data.Events);
             InitializeComponent();
             saved = true;
         }
@@ -46,7 +46,7 @@ namespace Pallets.Views
 
         public CompanyV(Data data, App app)
         {
-            dc = new DataC(data);
+            dc = new DataC(data.Events);
             this.app = app;
             InitializeComponent();
             saved = true;

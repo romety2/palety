@@ -53,6 +53,32 @@ namespace Pallets.Controllers
                 idE = data.Events[data.Events.Count - 1].Id + 1;
         }
 
+        public DataC(BindingList<Event> events)
+        {
+            data = new Data();
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream fs = null;
+            try
+            {
+                fs = new FileStream("data.dat", FileMode.Open, FileAccess.Read);
+                data = (Data)bf.Deserialize(fs);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Blad {0}", ex.Message);
+            }
+            finally
+            {
+                if (fs != null)
+                    fs.Close();
+                if (data.Companies.Count != 0)
+                    idC = data.Companies[data.Companies.Count - 1].Id + 1;
+                if (data.Pallets.Count != 0)
+                    idP = data.Pallets[data.Pallets.Count - 1].Id + 1;
+            }
+            data.Events = events;
+        }
+
         public BindingList<Company> addCompany(string name)
         {
             data.Companies.Add(new Company(idC, name));

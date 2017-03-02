@@ -25,7 +25,7 @@ namespace Pallets.Views
 
         public PaletteV(Data data)
         {
-            dc = new DataC(data);
+            dc = new DataC(data.Events);
             InitializeComponent();
             addition = true;
         }
@@ -40,7 +40,7 @@ namespace Pallets.Views
 
         public PaletteV(Data data, App app)
         {
-            dc = new DataC(data);
+            dc = new DataC(data.Events);
             this.app = app;
             InitializeComponent();
             addition = true;
