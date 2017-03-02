@@ -55,6 +55,7 @@ namespace Pallets.Views
         private void getView()
         {
             dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[1].HeaderText = "Paleta";
             dataGridView1.Columns[1].Width = 150;
             dataGridView1.Columns[1].ReadOnly = true;
             dataGridView1.Columns[2].HeaderText = "Ilość";

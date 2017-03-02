@@ -35,6 +35,7 @@ namespace Pallets
             MaximizeBox = false;
             dataGridView1.Columns[0].Visible = false;
             dataGridView1.Columns[1].Visible = false;
+            dataGridView1.Columns[2].HeaderText = "Data";
             dataGridView1.Columns[2].Width = 100;
             dataGridView1.Columns[2].ReadOnly = true;
             dataGridView1.Columns[3].HeaderText = "Firma";
@@ -45,6 +46,7 @@ namespace Pallets
             dataGridView1.Columns[4].ReadOnly = true;
             dataGridView1.Columns[5].Width = 300;
             dataGridView1.Columns[5].ReadOnly = true;
+            dataGridView1.Columns[5].HeaderText = "Uwagi";
             dataGridView1.AllowUserToAddRows = false;
         }
 
