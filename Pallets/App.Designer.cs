@@ -66,14 +66,14 @@
             // firmaToolStripMenuItem
             // 
             this.firmaToolStripMenuItem.Name = "firmaToolStripMenuItem";
-            this.firmaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.firmaToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.firmaToolStripMenuItem.Text = "Firmy";
             this.firmaToolStripMenuItem.Click += new System.EventHandler(this.companyToolStripMenuItem_Click);
             // 
             // paletaToolStripMenuItem
             // 
             this.paletaToolStripMenuItem.Name = "paletaToolStripMenuItem";
-            this.paletaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.paletaToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.paletaToolStripMenuItem.Text = "Palety";
             this.paletaToolStripMenuItem.Click += new System.EventHandler(this.paletteToolStripMenuItem_Click);
             // 
@@ -169,6 +169,7 @@
             this.MaximizeBox = false;
             this.Name = "App";
             this.Text = "Zarządzanie";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.App_FormClosing);
             this.Load += new System.EventHandler(this.Management_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

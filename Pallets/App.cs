@@ -158,5 +158,20 @@ namespace Pallets
         {
             this.Close();
         }
+
+        private void App_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!saved)
+            {
+                DialogResult dr = MessageBox.Show("Zapisać zmiany?", "Pytanie", MessageBoxButtons.YesNoCancel);
+                if (dr == DialogResult.Yes)
+                {
+                    saved = true;
+                    dc.saveData();
+                }
+                else if (dr == DialogResult.Cancel)
+                    e.Cancel = true;
+            }
+        }
     }
 }

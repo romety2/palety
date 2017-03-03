@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Pallets.Controllers;
 using Pallets.Models;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
 
 namespace Pallets.Views
 {

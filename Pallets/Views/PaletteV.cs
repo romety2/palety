@@ -14,20 +14,20 @@ namespace Pallets.Views
         private DataC dc;
         private Data data;
         private PaletteMV pmv;
-        public bool addition;
+        public bool saved;
 
         public PaletteV()
         {
             dc = new DataC();
             InitializeComponent();
-            addition = true;
+            saved = true;
         }
 
         public PaletteV(Data data)
         {
             dc = new DataC(data.Events);
             InitializeComponent();
-            addition = true;
+            saved = true;
         }
 
         public PaletteV(App app)
@@ -35,7 +35,7 @@ namespace Pallets.Views
             dc = new DataC();
             this.app = app;
             InitializeComponent();
-            addition = true;
+            saved = true;
         }
 
         public PaletteV(Data data, App app)
@@ -43,7 +43,7 @@ namespace Pallets.Views
             dc = new DataC(data.Events);
             this.app = app;
             InitializeComponent();
-            addition = true;
+            saved = true;
         }
 
         private BindingList<Palette> getPallets()
@@ -72,7 +72,7 @@ namespace Pallets.Views
             else
                 id = dataGridView1.CurrentCellAddress.Y;
             label4.Text = "Dodano paletę " + text + "!";
-            addition = false;
+            saved = false;
             BindingSource palety = new BindingSource();
             palety.DataSource = dc.addPalette(text, ilosc).OrderBy(o => o.Name);
             dataGridView1.DataSource = palety;
@@ -86,7 +86,7 @@ namespace Pallets.Views
         {
             label4.Text = "Zmieniono nazwę palety z " + dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value + " na " + text + "!";
             label3.Text = text;
-            addition = false;
+            saved = false;
             //dc.EditPaleta((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value, textBox1.Text);
             dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value = text;
             dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[2].Value = quantity.ToString();
@@ -126,7 +126,7 @@ namespace Pallets.Views
                 if (dr == DialogResult.Yes)
                 {
                     label4.Text = "Usunięto paletę " + myPalette + "!";
-                    addition = false;
+                    saved = false;
                     dc.deletePalette((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value);
                     dataGridView1.Rows.RemoveAt(dataGridView1.CurrentCellAddress.Y);
                     //app.refreshData();
@@ -137,7 +137,7 @@ namespace Pallets.Views
         private void button4_Click(object sender, EventArgs e)
         {
             label4.Text = "Zapisano zmiany!";
-            addition = true;
+            saved = true;
             dc.saveData();
             app.refreshDC();
         }
@@ -149,12 +149,12 @@ namespace Pallets.Views
 
         private void PaletteV_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!addition)
+            if (!saved)
             {
                 DialogResult dr = MessageBox.Show("Zapisać zmiany?", "Pytanie", MessageBoxButtons.YesNoCancel);
                 if (dr == DialogResult.Yes)
                 {
-                    addition = true;
+                    saved = true;
                     dc.saveData();
                     app.refreshDC();
                 }
