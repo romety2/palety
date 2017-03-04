@@ -177,6 +177,34 @@ namespace Pallets.Controllers
             }
         }
 
+        public void saveData(bool companies, bool pallets, bool events)
+        {
+            Data data2 = new Data();
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream fs = null;
+            try
+            {
+                fs = new FileStream("data.dat", FileMode.Open, FileAccess.Read);
+                data2 = (Data)bf.Deserialize(fs);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Blad {0}", ex.Message);
+            }
+            finally
+            {
+                if (fs != null)
+                    fs.Close();
+            }
+            if (!companies)
+                data.Companies = data2.Companies;
+            if (!pallets)
+                data.Pallets = data2.Pallets;
+            if (!events)
+                data.Events = data2.Events;
+            saveData();
+        }
+
         public Data getData()
         {
             return data;
