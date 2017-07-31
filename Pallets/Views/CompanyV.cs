@@ -34,6 +34,7 @@ namespace Pallets.Views
         {
             dc = new DataC();
             this.app = app;
+            app.Enabled = false;
             InitializeComponent();
             saved = true;
         }
@@ -42,6 +43,7 @@ namespace Pallets.Views
         {
             dc = new DataC(data.Events);
             this.app = app;
+            app.Enabled = false;
             InitializeComponent();
             saved = true;
         }
@@ -169,22 +171,21 @@ namespace Pallets.Views
             if (!saved)
             {
                 DialogResult dr = MessageBox.Show("Zapisać zmiany?", "Pytanie", MessageBoxButtons.YesNoCancel);
-                if (dr == DialogResult.Yes)
-                {
-                    saved = true;
-                    dc.saveData(true, false, false);
-                    app.refreshDC();
-                }
-                else if (dr == DialogResult.Cancel)
+                if (dr == DialogResult.Cancel)
                     e.Cancel = true;
-                if (dr != DialogResult.Cancel)
+                else
                 {
-                    if (fmv != null)
-                        fmv.Close();
+                    if (dr == DialogResult.Yes)
+                    {
+                        saved = true;
+                        dc.saveData(true, false, false);
+                        app.refreshDC();
+                    }
+                    app.Enabled = true;
                 }
             }
-            else if (fmv != null)
-                fmv.Close();
+            else
+                app.Enabled = true;
         }
     }
 }

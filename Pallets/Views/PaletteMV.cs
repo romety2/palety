@@ -17,6 +17,7 @@ namespace Pallets.Views
         public PaletteMV(PaletteV p)
         {
             this.p = p;
+            p.Enabled = false;
             addition = true;
             InitializeComponent();
         }
@@ -24,6 +25,7 @@ namespace Pallets.Views
         public PaletteMV(PaletteV p, string name, string quantity)
         {
             this.p = p;
+            p.Enabled = false;
             addition = false;
             InitializeComponent();
             textBox1.Text = name;
@@ -67,6 +69,7 @@ namespace Pallets.Views
 
         private void PaletteMV_FormClosing(object sender, FormClosingEventArgs e)
         {
+            p.Enabled = true;
             p.deleteSmallWindow();
         }
     }

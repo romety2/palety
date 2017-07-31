@@ -16,6 +16,7 @@ namespace Pallets.Views
         public CompanyMV(CompanyV f)
         {
             this.f = f;
+            f.Enabled = false;
             addition = true;
             InitializeComponent();
         }
@@ -23,6 +24,7 @@ namespace Pallets.Views
         public CompanyMV(CompanyV f, string name)
         {
             this.f = f;
+            f.Enabled = false;
             addition = false;
             InitializeComponent();
             textBox1.Text = name;
@@ -47,6 +49,7 @@ namespace Pallets.Views
 
         private void FirmaMV_FormClosing(object sender, FormClosingEventArgs e)
         {
+            f.Enabled = true;
             f.deleteSmallWindow();
         }
 

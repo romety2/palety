@@ -30,6 +30,7 @@ namespace Pallets.Views
         public EventMV(App a, DataC dc)
         {
             app = a;
+            app.Enabled = false;
             this.dc = dc;
             mpallets = new BindingList<Event.MyPalette>();
             addition = true;
@@ -39,6 +40,7 @@ namespace Pallets.Views
         public EventMV(App a, string id, DataC dc)
         {
             app = a;
+            app.Enabled = false;
             this.dc = dc;
             mpallets = new BindingList<Event.MyPalette>();
             addition = false;
@@ -101,6 +103,7 @@ namespace Pallets.Views
 
         private void EventMV_FormClosing(object sender, FormClosingEventArgs e)
         {
+            app.Enabled = true;
             app.deleteSmallWindow();
         }
 

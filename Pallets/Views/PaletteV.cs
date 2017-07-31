@@ -34,6 +34,7 @@ namespace Pallets.Views
         {
             dc = new DataC();
             this.app = app;
+            app.Enabled = false;
             InitializeComponent();
             saved = true;
         }
@@ -42,6 +43,7 @@ namespace Pallets.Views
         {
             dc = new DataC(data.Events);
             this.app = app;
+            app.Enabled = false;
             InitializeComponent();
             saved = true;
         }
@@ -144,6 +146,7 @@ namespace Pallets.Views
 
         private void button5_Click(object sender, EventArgs e)
         {
+            app.Enabled = true;
             this.Close();
         }
 
@@ -152,22 +155,21 @@ namespace Pallets.Views
             if (!saved)
             {
                 DialogResult dr = MessageBox.Show("Zapisać zmiany?", "Pytanie", MessageBoxButtons.YesNoCancel);
-                if (dr == DialogResult.Yes)
-                {
-                    saved = true;
-                    dc.saveData(false, true, false);
-                    app.refreshDC();
-                }
-                else if (dr == DialogResult.Cancel)
+                if (dr == DialogResult.Cancel)
                     e.Cancel = true;
-                if (dr != DialogResult.Cancel)
+                else
                 {
-                    if (pmv != null)
-                        pmv.Close();
+                    if (dr == DialogResult.Yes)
+                    {
+                        saved = true;
+                        dc.saveData(false, true, false);
+                        app.refreshDC();
+                    }
+                    app.Enabled = true;
                 }
             }
-            else if (pmv != null)
-                pmv.Close();
+            else
+                app.Enabled = true;
         }
 
         private void PaletteV_Load(object sender, EventArgs e)
