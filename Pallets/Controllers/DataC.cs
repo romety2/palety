@@ -146,7 +146,7 @@ namespace Pallets.Controllers
         public BindingList<Palette> deletePalette(ulong id)
         {
             Palette paleta = data.Pallets.First(o => o.Id == id);
-            data.Events.ToLookup(w => w.MPalette.Remove(w.MPalette.First(p => String.ReferenceEquals(p.Palette.Name, paleta.Name))));
+            //data.Events.ToLookup(w => w.MPalette.Remove(w.MPalette.First(p => p.Palette.Id == paleta.Id)));
             data.Pallets.Remove(paleta);
             return getData().Pallets;
         }

@@ -70,14 +70,13 @@ namespace Pallets.Views
                 id = dataGridView1.CurrentCellAddress.Y;
             label4.Text = "Dodano firmę " + text + "!";
             saved = false;
-            BindingSource firmy = new BindingSource();
-            firmy.DataSource = dc.addCompany(text).OrderBy(o => o.Name);
-            dataGridView1.DataSource = firmy;
+            BindingSource companies = new BindingSource();
+            companies.DataSource = dc.addCompany(text).OrderBy(o => o.Name);
+            dataGridView1.DataSource = companies;
             if (dataGridView1.Rows.Count != 1 && textBox1.Text == "")
                 dataGridView1.CurrentCell = dataGridView1[1, id];
             else
                 textBox1.Text = "";
-
         }
 
         public void editData(string text)
@@ -155,9 +154,7 @@ namespace Pallets.Views
         private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             if(dataGridView1.Rows.Count != 0)
-            {
                 label3.Text = dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value.ToString();
-            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

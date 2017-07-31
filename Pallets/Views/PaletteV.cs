@@ -181,9 +181,7 @@ namespace Pallets.Views
         private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridView1.Rows.Count != 0)
-            {
                 label3.Text = dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value.ToString();
-            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

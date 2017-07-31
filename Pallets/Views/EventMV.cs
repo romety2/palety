@@ -70,12 +70,23 @@ namespace Pallets.Views
             }
             else
             {
-                Event w = data.Events.First(o => o.Id.ToString() == eid);
-                dateTimePicker1.Text = w.Date;
+                Event ev = data.Events.First(o => o.Id.ToString() == eid);
+                BindingList<Event.MyPalette> evmpbl;
+                Event.MyPalette evmp;
+                dateTimePicker1.Text = ev.Date;
                 if (comboBox1.Items.Count != 0)
-                    comboBox1.SelectedIndex = comboBox1.FindString(w.Company.Name);
+                    comboBox1.SelectedIndex = comboBox1.FindString(ev.Company.Name);
                 pallets = data.Pallets.OrderBy(o => o.Name).ToList();
-                mpallets = w.MPalette;
+                evmpbl = ev.MPalette;
+                foreach (Palette p in pallets)
+                {
+                    evmp = evmpbl.FirstOrDefault(o => o.Palette.Id == p.Id);
+                    if (evmp.Palette != null)
+                        mpallets.Add(new Event.MyPalette(p, evmp.Plus, evmp.Minus));
+                    else
+                        mpallets.Add(new Event.MyPalette(p, 0, 0));
+                }
+                mpallets.OrderBy(o => o.Palette.Name).ToList();
                 comboBox2.DataSource = pallets;
                 comboBox2.DisplayMember = "Name";
                 if (comboBox2.Items.Count != 0)
@@ -84,7 +95,7 @@ namespace Pallets.Views
                     textBox3.Text = mpallets[0].Plus.ToString();
                     textBox4.Text = mpallets[0].Minus.ToString();
                 }
-                textBox2.Text = w.Comment;
+                textBox2.Text = ev.Comment;
             }
         }
 

@@ -87,14 +87,14 @@ namespace Pallets
                 textBox1.Text = "";
         }
 
-        public void editData(string data2, BindingList<Event.MyPalette> mpalety, Company firma, string uwagi)
+        public void editData(string data2, BindingList<Event.MyPalette> mpallets, Company company, string comment)
         {
             saved = false;
             //dc.EditFirma((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value,  data2, mpalety, firma, uwagi");
-            dc.editEventMP((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value, mpalety);
-            dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value = firma;
+            dc.editEventMP((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value, mpallets);
+            dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value = company;
             dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[2].Value = data2;
-            dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[5].Value = uwagi;
+            dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[5].Value = comment;
         }
 
         public void deleteSmallWindow()
