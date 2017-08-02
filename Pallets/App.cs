@@ -53,7 +53,6 @@ namespace Pallets
         private void SearchEvents()
         {
             BindingSource events = new BindingSource();
-            int result = DateTime.Compare(DateTime.Parse(getEvents()[0].Date), dateTimePicker1.Value.Date);
             events.DataSource = getEvents()
                 .Where(o => DateTime.Compare(DateTime.Parse(o.Date), dateTimePicker1.Value.Date) >= 0
                 && DateTime.Compare(DateTime.Parse(o.Date), dateTimePicker2.Value.Date) <= 0
