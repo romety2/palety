@@ -70,6 +70,14 @@ namespace Pallets
             name.Show();
         }
 
+        private void CheckDateRanges()
+        {
+            BindingSource events = new BindingSource();
+            int result = DateTime.Compare(DateTime.Parse(getEvents()[0].Date), dateTimePicker1.Value.Date);
+            events.DataSource = getEvents().Where(o => DateTime.Compare(DateTime.Parse(o.Date), dateTimePicker1.Value.Date) >= 0 && DateTime.Compare(DateTime.Parse(o.Date), dateTimePicker2.Value.Date) <= 0).OrderBy(o => o.Date).ThenBy(t => t.Company.Name).ToList();
+            dataGridView1.DataSource = events;
+        }
+
         public void addData(string data2, BindingList<Event.MyPalette> mpallets, Company company, string comment)
         {
             int id;
@@ -174,18 +182,21 @@ namespace Pallets
             }
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-            BindingSource events = new BindingSource();
-            events.DataSource = getEvents().Where(o => o.Date.Equals(dateTimePicker1.Value.ToShortDateString()) == true).OrderBy(o => o.Date).ThenBy(t => t.Company.Name).ToList();
-            dataGridView1.DataSource = events;
-        }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             BindingSource bs = new BindingSource();
             bs.DataSource = getEvents().Where(o => o.Company.Name.ToLower().Contains(textBox1.Text.ToLower()) == true).OrderBy(o => o.Date).ThenBy(t => t.Company.Name).ToList();
             dataGridView1.DataSource = bs; dataGridView1.DataSource = bs;
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            CheckDateRanges();
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            CheckDateRanges();
         }
     }
 }
