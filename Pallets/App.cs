@@ -74,7 +74,7 @@ namespace Pallets
         {
             BindingSource events = new BindingSource();
             int result = DateTime.Compare(DateTime.Parse(getEvents()[0].Date), dateTimePicker1.Value.Date);
-            events.DataSource = getEvents().Where(o => DateTime.Compare(DateTime.Parse(o.Date), dateTimePicker1.Value.Date) >= 0 && DateTime.Compare(DateTime.Parse(o.Date), dateTimePicker2.Value.Date) <= 0).OrderBy(o => o.Date).ThenBy(t => t.Company.Name).ToList();
+            events.DataSource = getEvents().Where(o => DateTime.Compare(DateTime.Parse(o.Date), dateTimePicker1.Value.Date) >= 0 && DateTime.Compare(DateTime.Parse(o.Date), dateTimePicker2.Value.Date) <= 0).OrderBy(o => DateTime.Parse(o.Date)).ThenBy(t => t.Company.Name).ToList();
             dataGridView1.DataSource = events;
         }
 
@@ -87,7 +87,7 @@ namespace Pallets
                 id = dataGridView1.CurrentCellAddress.Y;
             saved = false;
             BindingSource w = new BindingSource();
-            w.DataSource = dc.addEvent(data2, mpallets, company, comment).Where(o => o.Date.Equals(dateTimePicker1.Value.ToShortDateString()) == true).OrderBy(o => o.Date).ThenBy(t => t.Company.Name);
+            w.DataSource = dc.addEvent(data2, mpallets, company, comment).Where(o => o.Date.Equals(dateTimePicker1.Value.ToShortDateString()) == true).OrderBy(o => DateTime.Parse(o.Date)).ThenBy(t => t.Company.Name);
             dataGridView1.DataSource = w;
             if (dataGridView1.Rows.Count != 1 && textBox1.Text == "")
                 dataGridView1.CurrentCell = dataGridView1[2, id];
@@ -185,7 +185,7 @@ namespace Pallets
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             BindingSource bs = new BindingSource();
-            bs.DataSource = getEvents().Where(o => o.Company.Name.ToLower().Contains(textBox1.Text.ToLower()) == true).OrderBy(o => o.Date).ThenBy(t => t.Company.Name).ToList();
+            bs.DataSource = getEvents().Where(o => o.Company.Name.ToLower().Contains(textBox1.Text.ToLower()) == true).OrderBy(o => DateTime.Parse(o.Date)).ThenBy(t => t.Company.Name).ToList();
             dataGridView1.DataSource = bs; dataGridView1.DataSource = bs;
         }
 
