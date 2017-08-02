@@ -189,7 +189,7 @@ namespace Pallets.Views
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             BindingSource bs = new BindingSource();
-            bs.DataSource = getPallets().OrderBy(o => o.Name).Where(o => o.Name.ToLower().Contains(textBox1.Text.ToLower()) == true).ToList();
+            bs.DataSource = getPallets().Where(o => o.Name.ToLower().Contains(textBox1.Text.ToLower()) == true).OrderBy(o => o.Name).ToList();
             dataGridView1.DataSource = bs;
         }
     }

@@ -24,7 +24,7 @@ namespace Pallets
             saved = true;
         }
 
-        private BindingList<Event> getEvent()
+        private BindingList<Event> getEvents()
         {
             data = dc.getData();
             return data.Events;
@@ -53,7 +53,7 @@ namespace Pallets
         private void Management_Load(object sender, EventArgs e)
         {
             BindingSource events = new BindingSource();
-            events.DataSource = getEvent().Where(o => o.Date.Equals(dateTimePicker1.Value.ToShortDateString()) == true).OrderBy(o => o.Date).ThenBy(t => t.Company.Name).ToList();
+            events.DataSource = getEvents().Where(o => o.Date.Equals(dateTimePicker1.Value.ToShortDateString()) == true).OrderBy(o => o.Date).ThenBy(t => t.Company.Name).ToList();
             dataGridView1.DataSource = events;
             getViews();
         }
@@ -177,8 +177,15 @@ namespace Pallets
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             BindingSource events = new BindingSource();
-            events.DataSource = getEvent().Where(o => o.Date.Equals(dateTimePicker1.Value.ToShortDateString()) == true).OrderBy(o => o.Date).ThenBy(t => t.Company.Name).ToList();
+            events.DataSource = getEvents().Where(o => o.Date.Equals(dateTimePicker1.Value.ToShortDateString()) == true).OrderBy(o => o.Date).ThenBy(t => t.Company.Name).ToList();
             dataGridView1.DataSource = events;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            BindingSource bs = new BindingSource();
+            bs.DataSource = getEvents().Where(o => o.Company.Name.ToLower().Contains(textBox1.Text.ToLower()) == true).OrderBy(o => o.Date).ThenBy(t => t.Company.Name).ToList();
+            dataGridView1.DataSource = bs; dataGridView1.DataSource = bs;
         }
     }
 }
