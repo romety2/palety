@@ -162,7 +162,9 @@ namespace Pallets.Views
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             BindingSource bs = new BindingSource();
-            bs.DataSource = getCompanies().Where(o => o.Name.ToLower().Contains(textBox1.Text.ToLower()) == true).OrderBy(o => o.Name).ToList();
+            bs.DataSource = getCompanies()
+                .Where(o => o.Name.ToLower().Contains(textBox1.Text.ToLower()) == true)
+                .OrderBy(o => o.Name).ToList();
             dataGridView1.DataSource = bs;
         }
 
