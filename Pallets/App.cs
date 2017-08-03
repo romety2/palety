@@ -66,27 +66,68 @@ namespace Pallets
 
         private void Management_Load(object sender, EventArgs e)
         {
-            BindingSource events = new BindingSource();
-            events.DataSource = getEvents()
-                .Where(o => o.Date.Equals(dateTimePicker1.Value.ToShortDateString()) == true)
-                .OrderBy(o => o.Date)
-                .ThenBy(t => t.Company.Name).ToList();
-            dataGridView1.DataSource = events;
-            dateTimePicker1.MaxDate = dateTimePicker2.Value.Date;
-            dateTimePicker2.MinDate = dateTimePicker1.Value.Date;
+            SearchEvents();
             getViews();
         }
 
         private void companyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CompanyV name = new CompanyV(data, this);
-            name.Show();
+            if (!saved)
+            {
+                DialogResult dr = MessageBox.Show("Zapisać zmiany?", "Pytanie", MessageBoxButtons.YesNoCancel);
+                if (dr != DialogResult.Cancel)
+                {
+                    if (dr == DialogResult.Yes)
+                    {
+                        saved = true;
+                        dc.saveData();
+                    }
+                    else
+                    {
+                        refreshData();
+                        saved = true;
+                        SearchEvents();
+                        dataGridView1.Refresh();
+                    }
+                    CompanyV name = new CompanyV(data, this);
+                    name.Show();
+                }
+            }
+            else
+            {
+                CompanyV name = new CompanyV(data, this);
+                name.Show();
+            }
         }
 
         private void paletteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PaletteV name = new PaletteV(data, this);
-            name.Show();
+            if (!saved)
+            {
+                DialogResult dr = MessageBox.Show("Zapisać zmiany?", "Pytanie", MessageBoxButtons.YesNoCancel);
+                if (dr != DialogResult.Cancel)
+                {
+                    if (dr == DialogResult.Yes)
+                    {
+                        saved = true;
+                        dc.saveData();
+                    }
+                    else
+                    {
+                        refreshData();
+                        saved = true;
+                        SearchEvents();
+                        dataGridView1.Refresh();
+                    }
+                    PaletteV name = new PaletteV(data, this);
+                    name.Show();
+                }
+            }
+            else
+            {
+                PaletteV name = new PaletteV(data, this);
+                name.Show();
+            }
         }
 
         public void addData(string data2, BindingList<Event.MyPalette> mpallets, Company company, string comment)
@@ -124,9 +165,9 @@ namespace Pallets
             wmv = null;
         }
 
-        public void refreshDC()
+        public void refreshData()
         {
-            dc = new DataC();
+            data = dc.refreshData();
         }
 
         /*public void refreshData()

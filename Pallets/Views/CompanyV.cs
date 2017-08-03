@@ -136,8 +136,8 @@ namespace Pallets.Views
         {
             label4.Text = "Zapisano zmiany!";
             saved = true;
-            dc.saveData(true, false, false);
-            app.refreshDC();
+            dc.saveData();
+            app.refreshData();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -180,8 +180,8 @@ namespace Pallets.Views
                     if (dr == DialogResult.Yes)
                     {
                         saved = true;
-                        dc.saveData(true, false, false);
-                        app.refreshDC();
+                        dc.saveData();
+                        app.refreshData();
                     }
                     app.Enabled = true;
                 }
