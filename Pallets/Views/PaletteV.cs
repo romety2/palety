@@ -130,9 +130,7 @@ namespace Pallets.Views
                     label4.Text = "Usunięto paletę " + myPalette + "!";
                     saved = false;
                     dc.deletePalette((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value);
-                    dataGridView1.Rows.RemoveAt(dataGridView1.CurrentCellAddress.Y);
-                    //app.refreshData();
-                }
+                    dataGridView1.Rows.RemoveAt(dataGridView1.CurrentCellAddress.Y);                }
             }
         }
 

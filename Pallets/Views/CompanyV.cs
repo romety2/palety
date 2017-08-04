@@ -86,7 +86,7 @@ namespace Pallets.Views
             label4.Text = "Zmieniono nazwę firmy z " + dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value + " na " + text + "!";
             label3.Text = text;
             saved = false;
-            //dc.EditFirma((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value, textBox1.Text);
+            //dc.editCompany((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value, textBox1.Text);
             dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value = text;
         }
 
@@ -124,8 +124,6 @@ namespace Pallets.Views
                 {
                     label4.Text = "Usunięto firmę " + dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value + "!";
                     saved = false;
-                    //BindingSource companies = new BindingSource();
-                    //dataGridView1.DataSource = companies;
                     dc.deleteCompany((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value);
                     dataGridView1.Rows.RemoveAt(dataGridView1.CurrentCellAddress.Y);
                 }
@@ -184,10 +182,12 @@ namespace Pallets.Views
                         app.refreshData();
                     }
                     app.Enabled = true;
+                    app.refreshDataGridView();
                 }
             }
             else
                 app.Enabled = true;
+                app.refreshDataGridView();
         }
     }
 }

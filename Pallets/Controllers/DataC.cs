@@ -139,15 +139,16 @@ namespace Pallets.Controllers
 
         public BindingList<Company> deleteCompany(ulong id)
         {
+            data.Events.Remove(data.Events.Single(ev => ev.Company.Id == id));
             data.Companies.Remove(data.Companies.First(o => o.Id == id));
             return getData().Companies;
         }
 
         public BindingList<Palette> deletePalette(ulong id)
         {
-            Palette paleta = data.Pallets.First(o => o.Id == id);
-            //data.Events.ToLookup(w => w.MPalette.Remove(w.MPalette.First(p => p.Palette.Id == paleta.Id)));
-            data.Pallets.Remove(paleta);
+            Palette palette = data.Pallets.First(o => o.Id == id);
+            data.Events.ToLookup(ev => ev.MPalette.Remove(ev.MPalette.First(p => p.Palette.Id == palette.Id)));
+            data.Pallets.Remove(palette);
             return getData().Pallets;
         }
 

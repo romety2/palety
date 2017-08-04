@@ -52,7 +52,7 @@ namespace Pallets.Models
         public ulong Id { get; set; }
         public Company Company { get; set; }
         public string Date { get; set; }
-        public string WyswietlNazweFirme
+        public string ViewNameCompany
         {
             get {
                     return this.Company.Name;

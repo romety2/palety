@@ -140,9 +140,11 @@ namespace Pallets
             saved = false;
             BindingSource w = new BindingSource();
             w.DataSource = dc.addEvent(data2, mpallets, company, comment)
-                .Where(o => o.Date.Equals(dateTimePicker1.Value.ToShortDateString()) == true)
+                .Where(o => DateTime.Compare(DateTime.Parse(o.Date), dateTimePicker1.Value.Date) >= 0
+                && DateTime.Compare(DateTime.Parse(o.Date), dateTimePicker2.Value.Date) <= 0
+                && o.Company.Name.ToLower().Contains(textBox1.Text.ToLower()) == true)
                 .OrderBy(o => DateTime.Parse(o.Date))
-                .ThenBy(t => t.Company.Name);
+                .ThenBy(t => t.Company.Name).ToList();
             dataGridView1.DataSource = w;
             if (dataGridView1.Rows.Count != 1 && textBox1.Text == "")
                 dataGridView1.CurrentCell = dataGridView1[2, id];
@@ -170,10 +172,10 @@ namespace Pallets
             data = dc.refreshData();
         }
 
-        /*public void refreshData()
+        public void refreshDataGridView()
         {
-            this.dataGridView1.Refresh();
-        }*/
+            SearchEvents();
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
