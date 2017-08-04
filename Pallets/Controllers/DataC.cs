@@ -137,6 +137,17 @@ namespace Pallets.Controllers
             return getData().Events;
         }
 
+        public void editEventCompany(ulong id, string name)
+        {
+            data.Events.Where(ev => ev.Company.Id == id).ToLookup(ev => ev.Company.Name = name);
+        }
+
+        public void editEventPalette(ulong id, string name)
+        {
+            Palette palette = data.Pallets.First(o => o.Id == id);
+            data.Events.ToLookup(ev => ev.MPalette.First(p => p.Palette.Id == palette.Id).Palette.Name = name);
+        }
+
         public BindingList<Company> deleteCompany(ulong id)
         {
             data.Events.Remove(data.Events.Single(ev => ev.Company.Id == id));

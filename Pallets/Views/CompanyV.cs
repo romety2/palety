@@ -86,8 +86,8 @@ namespace Pallets.Views
             label4.Text = "Zmieniono nazwę firmy z " + dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value + " na " + text + "!";
             label3.Text = text;
             saved = false;
-            //dc.editCompany((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value, textBox1.Text);
             dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value = text;
+            dc.editEventCompany((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value, text);
         }
 
         public void deleteSmallWindow()
