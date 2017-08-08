@@ -5,7 +5,6 @@ using System.Linq;
 using System.Windows.Forms;
 using Pallets.Controllers;
 using Pallets.Models;
-using System.Collections.Generic;
 
 namespace Pallets.Views
 {

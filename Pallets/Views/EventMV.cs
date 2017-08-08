@@ -110,7 +110,9 @@ namespace Pallets.Views
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             BindingSource bs = new BindingSource();
-            companies = data.Companies.OrderBy(o => o.Name).Where(o => o.Name.ToLower().Contains(textBox1.Text.ToLower()) == true).ToList();
+            companies = data.Companies
+                .OrderBy(o => o.Name)
+                .Where(o => o.Name.ToLower().Contains(textBox1.Text.ToLower()) == true).ToList();
             bs.DataSource = companies;
             comboBox1.DataSource = bs;
             if (comboBox1.Items.Count == 0)
@@ -120,7 +122,9 @@ namespace Pallets.Views
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
             BindingSource bs = new BindingSource();
-            pallets = data.Pallets.OrderBy(o => o.Name).Where(o => o.Name.ToLower().Contains(textBox5.Text.ToLower())).ToList();
+            pallets = data.Pallets
+                .OrderBy(o => o.Name)
+                .Where(o => o.Name.ToLower().Contains(textBox5.Text.ToLower())).ToList();
             bs.DataSource = pallets;
             comboBox2.DataSource = bs;
             if (comboBox2.Items.Count == 0)
@@ -169,14 +173,22 @@ namespace Pallets.Views
         {
             int i = mpallets.IndexOf(mpallets.First(o => o.Palette.Id == pallets[comboBox2.SelectedIndex].Id));
             if (textBox3.Text != "")
-                mpallets[i] = new Event.MyPalette(mpallets[i].Palette, Int32.Parse(textBox3.Text), mpallets[i].Minus);
+            {
+                Event.MyPalette mph = mpallets[i];
+                mph.Plus = Int32.Parse(textBox3.Text);
+                mpallets[i] = mph;
+            }
         }
 
         private void textBox4_Leave(object sender, EventArgs e)
         {
             int i = mpallets.IndexOf(mpallets.First(o => o.Palette.Id == pallets[comboBox2.SelectedIndex].Id));
             if(textBox4.Text != "")
-                mpallets[i] = new Event.MyPalette(mpallets[i].Palette, mpallets[i].Plus, Int32.Parse(textBox4.Text));
+            {
+                Event.MyPalette mph = mpallets[i];
+                mph.Minus = Int32.Parse(textBox4.Text);
+                mpallets[i] = mph;
+            }
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
