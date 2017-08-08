@@ -60,18 +60,15 @@ namespace Pallets.Models
         {
               get   {
                         string p = "";
-                        int r, ile = 0;
+                        int ile = 0;
                         List<MyPalette> mp = pallets.Where(o => o.Plus != 0 || o.Minus != 0).ToList();
                         foreach(MyPalette pm in mp)
                         {
                             ile++;
-                            r = pm.Plus - pm.Minus;
                             p += pm.Palette.Name + ": ";
-                            if (r > 0)
-                                p += "+";
-                            p += r.ToString();
+                                p += "przyb. : " + pm.Plus + ", odd. :" + pm.Minus;
                             if (mp.Count != ile)
-                                p += ", ";
+                                p += "\n";
                         }
                         return p;
                     }

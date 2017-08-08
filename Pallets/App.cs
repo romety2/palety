@@ -253,5 +253,14 @@ namespace Pallets
         {
             SearchEvents();
         }
+
+        private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Rows.Count != 0)
+            {
+                label6.Text = dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[2].Value.ToString();
+                label7.Text = dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[3].Value.ToString();
+            }
+        }
     }
 }
