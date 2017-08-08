@@ -4,6 +4,7 @@ using Pallets.Models;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System.ComponentModel;
+using System.Collections.Generic;
 
 namespace Pallets.Controllers
 {
@@ -150,7 +151,10 @@ namespace Pallets.Controllers
 
         public BindingList<Company> deleteCompany(ulong id)
         {
-            data.Events.Remove(data.Events.Single(ev => ev.Company.Id == id));
+            data.Events.ToList().RemoveAll(ev => ev.Company.Id == id);
+            List<Event> eventsToRemove = data.Events.Where(ev => ev.Company.Id == id).ToList();
+            foreach (Event etr in eventsToRemove)
+                data.Events.Remove(etr);
             data.Companies.Remove(data.Companies.First(o => o.Id == id));
             return getData().Companies;
         }

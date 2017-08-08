@@ -207,7 +207,7 @@ namespace Pallets
                     saved = false;
                     //BindingSource w = new BindingSource();
                     //dataGridView1.DataSource = w;
-                    dc.deletePalette((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value);
+                    dc.deleteEvent((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value);
                     dataGridView1.Rows.RemoveAt(dataGridView1.CurrentCellAddress.Y);
                 }
             }
