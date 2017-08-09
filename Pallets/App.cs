@@ -138,6 +138,7 @@ namespace Pallets
             else
                 id = dataGridView1.CurrentCellAddress.Y;
             saved = false;
+            label8.Text = "Dodano " + data2 + " (" + company.Name + ")!";
             BindingSource w = new BindingSource();
             w.DataSource = dc.addEvent(data2, mpallets, company, comment)
                 .Where(o => DateTime.Compare(DateTime.Parse(o.Date), dateTimePicker1.Value.Date) >= 0
@@ -155,6 +156,7 @@ namespace Pallets
         public void editData(string data2, BindingList<Event.MyPalette> mpallets, Company company, string comment)
         {
             saved = false;
+            label8.Text = "Zmieniono " + data2 + " (" + company.Name + ")!";
             //dc.EditFirma((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value,  data2, mpallets, company, comment");
             dc.editEventMP((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value, mpallets);
             dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value = company;
@@ -204,6 +206,8 @@ namespace Pallets
                 DialogResult dr = MessageBox.Show("Na pewno usunąć ?", "Pytanie", MessageBoxButtons.YesNo);
                 if (dr == DialogResult.Yes)
                 {
+                    label8.Text = "Usunięto " + dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[2].Value
+                        + " (" + dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[3].Value + ")!";
                     saved = false;
                     //BindingSource w = new BindingSource();
                     //dataGridView1.DataSource = w;
