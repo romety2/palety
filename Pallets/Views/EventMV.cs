@@ -18,7 +18,7 @@ namespace Pallets.Views
         private List<Palette> pallets;
         private BindingList<Event.MyPalette> mpallets;
         private bool addition;
-        private string eid;
+        private ulong eid;
 
         public EventMV()
         {
@@ -27,21 +27,21 @@ namespace Pallets.Views
             InitializeComponent();
         }
 
-        public EventMV(App a, DataC dc)
+        public EventMV(Data data, App a)
         {
-            app = a;
+            this.app = a;
             app.Enabled = false;
-            this.dc = dc;
+            this.dc = new DataC(data);
             mpallets = new BindingList<Event.MyPalette>();
             addition = true;
             InitializeComponent();
         }
 
-        public EventMV(App a, string id, DataC dc)
+        public EventMV(ulong id, Data data, App a)
         {
-            app = a;
+            this.app = a;
             app.Enabled = false;
-            this.dc = dc;
+            this.dc = new DataC(data);
             mpallets = new BindingList<Event.MyPalette>();
             addition = false;
             InitializeComponent();
@@ -72,7 +72,7 @@ namespace Pallets.Views
             }
             else
             {
-                Event ev = data.Events.First(o => o.Id.ToString() == eid);
+                Event ev = data.Events.First(o => o.Id == eid);
                 BindingList<Event.MyPalette> evmpbl;
                 Event.MyPalette evmp;
                 dateTimePicker1.Text = ev.Date;

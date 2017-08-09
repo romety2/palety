@@ -74,6 +74,12 @@
     <Compile Include="Views\CompanyV.Designer.cs">
       <DependentUpon>CompanyV.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\EventVV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EventVV.Designer.cs">
+      <DependentUpon>EventVV.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\PaletteMV.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CompanyV.resx">
       <DependentUpon>CompanyV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EventVV.resx">
+      <DependentUpon>EventVV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\PaletteMV.resx">
       <DependentUpon>PaletteMV.cs</DependentUpon>

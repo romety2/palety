@@ -48,6 +48,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -74,14 +75,14 @@
             // firmaToolStripMenuItem
             // 
             this.firmaToolStripMenuItem.Name = "firmaToolStripMenuItem";
-            this.firmaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.firmaToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.firmaToolStripMenuItem.Text = "Firmy";
             this.firmaToolStripMenuItem.Click += new System.EventHandler(this.companyToolStripMenuItem_Click);
             // 
             // paletaToolStripMenuItem
             // 
             this.paletaToolStripMenuItem.Name = "paletaToolStripMenuItem";
-            this.paletaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.paletaToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.paletaToolStripMenuItem.Text = "Palety";
             this.paletaToolStripMenuItem.Click += new System.EventHandler(this.paletteToolStripMenuItem_Click);
             // 
@@ -231,11 +232,22 @@
             this.label7.Size = new System.Drawing.Size(0, 17);
             this.label7.TabIndex = 56;
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(989, 142);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(32, 23);
+            this.button6.TabIndex = 57;
+            this.button6.Text = "...";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1033, 439);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -289,6 +301,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button6;
     }
 }
 

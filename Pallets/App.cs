@@ -181,7 +181,7 @@ namespace Pallets
         {
             if (wmv == null)
             {
-                wmv = new EventMV(this, dc);
+                wmv = new EventMV(data, this);
                 wmv.Text = "Dodaj";
                 wmv.Show();
             }
@@ -191,7 +191,7 @@ namespace Pallets
         {
             if (wmv == null && dataGridView1.Rows.Count != 0)
             {
-                wmv = new EventMV(this, dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value.ToString(), dc);
+                wmv = new EventMV((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value, data, this);
                 wmv.Text = "Edytuj";
                 wmv.Show();
             }
@@ -222,6 +222,12 @@ namespace Pallets
         private void button5_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            EventVV name = new EventVV((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value, data, this);
+            name.Show();
         }
 
         private void App_FormClosing(object sender, FormClosingEventArgs e)
