@@ -50,7 +50,7 @@ namespace Pallets
             dataGridView1.AllowUserToAddRows = false;
         }
 
-        private void SearchEvents()
+        private void searchEvents()
         {
             BindingSource events = new BindingSource();
             events.DataSource = getEvents()
@@ -64,10 +64,23 @@ namespace Pallets
             dateTimePicker2.MinDate = dateTimePicker1.Value.Date;
         }
 
+        private void checkViewActualEvent()
+        {
+            if (dataGridView1.Rows.Count == 0)
+            {
+                label6.Text = "";
+                label7.Text = "";
+                button6.Enabled = false;
+            }
+            else
+                button6.Enabled = true;
+        }
+
         private void Management_Load(object sender, EventArgs e)
         {
-            SearchEvents();
+            searchEvents();
             getViews();
+            checkViewActualEvent();
         }
 
         private void companyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -86,7 +99,8 @@ namespace Pallets
                     {
                         refreshData();
                         saved = true;
-                        SearchEvents();
+                        searchEvents();
+                        checkViewActualEvent();
                         dataGridView1.Refresh();
                     }
                     CompanyV name = new CompanyV(data, this);
@@ -116,7 +130,8 @@ namespace Pallets
                     {
                         refreshData();
                         saved = true;
-                        SearchEvents();
+                        searchEvents();
+                        checkViewActualEvent();
                         dataGridView1.Refresh();
                     }
                     PaletteV name = new PaletteV(data, this);
@@ -151,6 +166,7 @@ namespace Pallets
                 dataGridView1.CurrentCell = dataGridView1[2, id];
             else
                 textBox1.Text = "";
+            checkViewActualEvent();
         }
 
         public void editData(string data2, BindingList<Event.MyPalette> mpallets, Company company, string comment)
@@ -162,6 +178,7 @@ namespace Pallets
             dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value = company;
             dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[2].Value = data2;
             dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[5].Value = comment;
+            checkViewActualEvent();
         }
 
         public void deleteSmallWindow()
@@ -176,7 +193,7 @@ namespace Pallets
 
         public void refreshDataGridView()
         {
-            SearchEvents();
+            searchEvents();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -251,17 +268,20 @@ namespace Pallets
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            SearchEvents();
+            searchEvents();
+            checkViewActualEvent();
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            SearchEvents();
+            searchEvents();
+            checkViewActualEvent();
         }
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
-            SearchEvents();
+            searchEvents();
+            checkViewActualEvent();
         }
 
         private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)

@@ -63,6 +63,18 @@ namespace Pallets.Views
             dataGridView1.AllowUserToAddRows = false;
         }
 
+
+        private void checkViewActualCompany()
+        {
+            if (dataGridView1.Rows.Count == 0)
+            {
+                label3.Text = "";
+                //button6.Enabled = false;
+            }
+            /*else
+                button6.Enabled = true;*/
+        }
+
         public void addData(string text)
         {
             int id;
@@ -79,6 +91,7 @@ namespace Pallets.Views
                 dataGridView1.CurrentCell = dataGridView1[1, id];
             else
                 textBox1.Text = "";
+            checkViewActualCompany();
         }
 
         public void editData(string text)
@@ -88,6 +101,7 @@ namespace Pallets.Views
             saved = false;
             dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value = text;
             dc.editEventCompany((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value, text);
+            checkViewActualCompany();
         }
 
         public void deleteSmallWindow()
@@ -126,6 +140,7 @@ namespace Pallets.Views
                     saved = false;
                     dc.deleteCompany((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value);
                     dataGridView1.Rows.RemoveAt(dataGridView1.CurrentCellAddress.Y);
+                    checkViewActualCompany();
                 }
             }
         }
@@ -149,6 +164,7 @@ namespace Pallets.Views
             companies.DataSource = getCompanies().OrderBy(o => o.Name).ToList();
             dataGridView1.DataSource = companies;
             getView();
+            checkViewActualCompany();
         }
 
         private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)

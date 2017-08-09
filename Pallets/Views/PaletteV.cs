@@ -66,6 +66,17 @@ namespace Pallets.Views
             dataGridView1.AllowUserToAddRows = false;
         }
 
+        private void checkViewActualPalette()
+        {
+            if (dataGridView1.Rows.Count == 0)
+            {
+                label3.Text = "";
+                //button6.Enabled = false;
+            }
+            /*else
+                button6.Enabled = true;*/
+        }
+
         public void addData(string text, int ilosc)
         {
             int id;
@@ -82,6 +93,7 @@ namespace Pallets.Views
                 dataGridView1.CurrentCell = dataGridView1[1, id];
             else
                 textBox1.Text = "";
+            checkViewActualPalette();
         }
 
         public void editData(string text, int quantity)
@@ -92,6 +104,7 @@ namespace Pallets.Views
             dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value = text;
             dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[2].Value = quantity.ToString();
             dc.editEventPalette((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value, text);
+            checkViewActualPalette();
         }
 
         public void deleteSmallWindow()
@@ -131,6 +144,7 @@ namespace Pallets.Views
                     saved = false;
                     dc.deletePalette((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value);
                     dataGridView1.Rows.RemoveAt(dataGridView1.CurrentCellAddress.Y);
+                    checkViewActualPalette();
                 }
             }
         }
@@ -177,6 +191,7 @@ namespace Pallets.Views
             pallets.DataSource = getPallets().OrderBy(o => o.Name).ToList();
             dataGridView1.DataSource = pallets;
             getView();
+            checkViewActualPalette();
         }
 
         private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
