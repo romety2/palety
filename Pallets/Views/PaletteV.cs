@@ -176,13 +176,14 @@ namespace Pallets.Views
                     {
                         saved = true;
                         dc.saveData();
-                        app.refreshData();
                     }
                     app.Enabled = true;
                 }
             }
             else
                 app.Enabled = true;
+            app.refreshData();
+            app.refreshDataGridView();
         }
 
         private void PaletteV_Load(object sender, EventArgs e)

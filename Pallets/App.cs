@@ -236,6 +236,7 @@ namespace Pallets
 
         private void button4_Click(object sender, EventArgs e)
         {
+            label4.Text = "Zapisano zmiany!";
             saved = true;
             dc.saveData();
         }

@@ -197,15 +197,14 @@ namespace Pallets.Views
                     {
                         saved = true;
                         dc.saveData();
-                        app.refreshData();
                     }
                     app.Enabled = true;
-                    app.refreshDataGridView();
                 }
             }
             else
                 app.Enabled = true;
-                app.refreshDataGridView();
+            app.refreshData();
+            app.refreshDataGridView();
         }
     }
 }
