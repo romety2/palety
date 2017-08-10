@@ -22,7 +22,7 @@ namespace Pallets.Views
             InitializeComponent();
         }
 
-        public PaletteMV(PaletteV p, string name, string quantity)
+        public PaletteMV(PaletteV p, string name, string quantity, string description)
         {
             this.p = p;
             p.Enabled = false;
@@ -30,6 +30,7 @@ namespace Pallets.Views
             InitializeComponent();
             textBox1.Text = name;
             textBox2.Text = quantity;
+            textBox3.Text = description;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -37,9 +38,9 @@ namespace Pallets.Views
             if (textBox1.Text != "" && textBox2.Text != "")
             {
                 if (addition)
-                    p.addData(textBox1.Text, Int32.Parse(textBox2.Text));
+                    p.addData(textBox1.Text, Int32.Parse(textBox2.Text), textBox3.Text);
                 else
-                    p.editData(textBox1.Text, Int32.Parse(textBox2.Text));
+                    p.editData(textBox1.Text, Int32.Parse(textBox2.Text), textBox3.Text);
                 this.Close();
             }
         }

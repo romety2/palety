@@ -10,15 +10,17 @@ namespace Pallets.Models
 
         }
 
-        public Palette(ulong id, string name, int quantity)
+        public Palette(ulong id, string name, int quantity, string description)
         {
             Id = id;
             Name = name;
             Quantity = quantity;
+            Description = description;
         }
 
         public ulong Id { get; set; }
         public string Name { get; set; }
         public int Quantity { get; set; }
+        public string Description { get; set; }
     }
 }

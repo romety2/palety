@@ -63,6 +63,7 @@ namespace Pallets.Views
             dataGridView1.Columns[2].HeaderText = "Ilość";
             dataGridView1.Columns[2].Width = 150;
             dataGridView1.Columns[2].ReadOnly = true;
+            dataGridView1.Columns[3].Visible = false;
             dataGridView1.AllowUserToAddRows = false;
         }
 
@@ -77,17 +78,17 @@ namespace Pallets.Views
                 button6.Enabled = true;*/
         }
 
-        public void addData(string text, int ilosc)
+        public void addData(string name, int quantity, string description)
         {
             int id;
-            if (dataGridView1.Rows.Count != 0 && String.Compare(text, dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value.ToString(), true) < 0)
+            if (dataGridView1.Rows.Count != 0 && String.Compare(name, dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value.ToString(), true) < 0)
                 id = dataGridView1.CurrentCellAddress.Y + 1;
             else
                 id = dataGridView1.CurrentCellAddress.Y;
-            label4.Text = "Dodano paletę " + text + "!";
+            label4.Text = "Dodano paletę " + name + "!";
             saved = false;
             BindingSource palety = new BindingSource();
-            palety.DataSource = dc.addPalette(text, ilosc).OrderBy(o => o.Name);
+            palety.DataSource = dc.addPalette(name, quantity, description).OrderBy(o => o.Name);
             dataGridView1.DataSource = palety;
             if (dataGridView1.Rows.Count != 1 && textBox1.Text == "")
                 dataGridView1.CurrentCell = dataGridView1[1, id];
@@ -96,14 +97,15 @@ namespace Pallets.Views
             checkViewActualPalette();
         }
 
-        public void editData(string text, int quantity)
+        public void editData(string name, int quantity, string description)
         {
-            label4.Text = "Zmieniono nazwę palety z " + dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value + " na " + text + "!";
-            label3.Text = text;
+            label4.Text = "Zmieniono dane palety " + name + "!";
+            label3.Text = name;
             saved = false;
-            dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value = text;
+            dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value = name;
             dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[2].Value = quantity.ToString();
-            dc.editEventPalette((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value, text);
+            dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[3].Value = description;
+            dc.editEventPalette((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value, name);
             checkViewActualPalette();
         }
 
@@ -126,7 +128,7 @@ namespace Pallets.Views
         {
             if (pmv == null && dataGridView1.Rows.Count != 0)
             {
-                pmv = new PaletteMV(this, dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value.ToString(), dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[2].Value.ToString());
+                pmv = new PaletteMV(this, dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value.ToString(), dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[2].Value.ToString(), dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[3].Value.ToString());
                 pmv.Text = "Zmień dane palety";
                 pmv.Show();
             }

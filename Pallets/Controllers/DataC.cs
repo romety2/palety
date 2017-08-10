@@ -80,16 +80,16 @@ namespace Pallets.Controllers
             data.Events = events;
         }
 
-        public BindingList<Company> addCompany(string name)
+        public BindingList<Company> addCompany(string name, string description)
         {
-            data.Companies.Add(new Company(idC, name));
+            data.Companies.Add(new Company(idC, name, description));
             idC++;
             return getData().Companies;
         }
 
-        public BindingList<Palette> addPalette(string name, int quantity)
+        public BindingList<Palette> addPalette(string name, int quantity, string description)
         {
-            Palette palette = new Palette(idP, name, quantity);
+            Palette palette = new Palette(idP, name, quantity, description);
             data.Pallets.Add(palette);
             data.Events.ToLookup(w => addEventMP(w.Id, palette));
             idP++;

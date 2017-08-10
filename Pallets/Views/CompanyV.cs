@@ -60,6 +60,7 @@ namespace Pallets.Views
             dataGridView1.Columns[1].HeaderText = "Firma";
             dataGridView1.Columns[1].Width = 250;
             dataGridView1.Columns[1].ReadOnly = true;
+            dataGridView1.Columns[2].Visible = false;
             dataGridView1.AllowUserToAddRows = false;
         }
 
@@ -75,17 +76,17 @@ namespace Pallets.Views
                 button6.Enabled = true;*/
         }
 
-        public void addData(string text)
+        public void addData(string name, string description)
         {
             int id;
-            if (dataGridView1.Rows.Count != 0 && String.Compare(text, dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value.ToString(), true) < 0)
+            if (dataGridView1.Rows.Count != 0 && String.Compare(name, dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value.ToString(), true) < 0)
                 id = dataGridView1.CurrentCellAddress.Y + 1;
             else
                 id = dataGridView1.CurrentCellAddress.Y;
-            label4.Text = "Dodano firmę " + text + "!";
+            label4.Text = "Dodano firmę " + name + "!";
             saved = false;
             BindingSource companies = new BindingSource();
-            companies.DataSource = dc.addCompany(text).OrderBy(o => o.Name);
+            companies.DataSource = dc.addCompany(name, description).OrderBy(o => o.Name);
             dataGridView1.DataSource = companies;
             if (dataGridView1.Rows.Count != 1 && textBox1.Text == "")
                 dataGridView1.CurrentCell = dataGridView1[1, id];
@@ -94,13 +95,14 @@ namespace Pallets.Views
             checkViewActualCompany();
         }
 
-        public void editData(string text)
+        public void editData(string name, string description)
         {
-            label4.Text = "Zmieniono nazwę firmy z " + dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value + " na " + text + "!";
-            label3.Text = text;
+            label4.Text = "Zmieniono dane firmy " + name + "!";
+            label3.Text = name;
             saved = false;
-            dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value = text;
-            dc.editEventCompany((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value, text);
+            dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value = name;
+            dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[2].Value = description;
+            dc.editEventCompany((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value, name);
             checkViewActualCompany();
         }
 
@@ -123,7 +125,7 @@ namespace Pallets.Views
         {
             if (fmv == null && dataGridView1.Rows.Count != 0)
             {
-                fmv = new CompanyMV(this, dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value.ToString());
+                fmv = new CompanyMV(this, dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value.ToString(), dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[2].Value.ToString());
                 fmv.Text = "Zmień nazwę firmy";
                 fmv.Show();
             }

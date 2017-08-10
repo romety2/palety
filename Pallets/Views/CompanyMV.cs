@@ -21,13 +21,14 @@ namespace Pallets.Views
             InitializeComponent();
         }
 
-        public CompanyMV(CompanyV f, string name)
+        public CompanyMV(CompanyV f, string name, string description)
         {
             this.f = f;
             f.Enabled = false;
             addition = false;
             InitializeComponent();
             textBox1.Text = name;
+            textBox2.Text = description;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -35,9 +36,9 @@ namespace Pallets.Views
             if (textBox1.Text != "")
             {
                 if(addition)
-                    f.addData(textBox1.Text);
+                    f.addData(textBox1.Text, textBox2.Text);
                 else
-                    f.editData(textBox1.Text);
+                    f.editData(textBox1.Text, textBox2.Text);
                 this.Close();
             }
         }
