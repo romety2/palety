@@ -1,13 +1,7 @@
-﻿using System;
-using Pallets.Controllers;
+﻿using Pallets.Controllers;
 using Pallets.Models;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Pallets.Views
@@ -69,7 +63,6 @@ namespace Pallets.Views
                 label2.Location = new Point(label2.Location.X, label2.Location.Y + maxHeight);
                 label6.Location = new Point(label6.Location.X, label6.Location.Y + maxHeight);
             }
-            label6.Text = ev.Company.Name;
             temp = label6.Height;
             label6.Text = ev.Company.Name;
             maxHeight += label6.Height - temp;

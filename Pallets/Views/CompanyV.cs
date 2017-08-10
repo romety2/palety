@@ -70,10 +70,10 @@ namespace Pallets.Views
             if (dataGridView1.Rows.Count == 0)
             {
                 label3.Text = "";
-                //button6.Enabled = false;
+                button6.Enabled = false;
             }
-            /*else
-                button6.Enabled = true;*/
+            else
+                button6.Enabled = true;
         }
 
         public void addData(string name, string description)
@@ -207,6 +207,12 @@ namespace Pallets.Views
                 app.Enabled = true;
             app.refreshData();
             app.refreshDataGridView();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            CompanyVV name = new CompanyVV((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value, data, this);
+            name.Show();
         }
     }
 }

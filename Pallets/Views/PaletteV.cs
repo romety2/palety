@@ -72,10 +72,10 @@ namespace Pallets.Views
             if (dataGridView1.Rows.Count == 0)
             {
                 label3.Text = "";
-                //button6.Enabled = false;
+                button6.Enabled = false;
             }
-            /*else
-                button6.Enabled = true;*/
+            else
+                button6.Enabled = true;
         }
 
         public void addData(string name, int quantity, string description)
@@ -212,6 +212,11 @@ namespace Pallets.Views
                 .OrderBy(o => o.Name).ToList();
             dataGridView1.DataSource = bs;
             checkViewActualPalette();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
