@@ -171,6 +171,7 @@ namespace Pallets.Views
         {
             if(dataGridView1.Rows.Count != 0)
                 label3.Text = dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[1].Value.ToString();
+            dataGridView1.CurrentRow.Selected = true;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -180,6 +181,7 @@ namespace Pallets.Views
                 .Where(o => o.Name.ToLower().Contains(textBox1.Text.ToLower()) == true)
                 .OrderBy(o => o.Name).ToList();
             dataGridView1.DataSource = bs;
+            checkViewActualCompany();
         }
 
         private void CompanyV_FormClosing(object sender, FormClosingEventArgs e)

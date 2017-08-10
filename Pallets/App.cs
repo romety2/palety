@@ -291,6 +291,7 @@ namespace Pallets
                 label6.Text = dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[2].Value.ToString();
                 label7.Text = dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[3].Value.ToString();
             }
+            dataGridView1.CurrentRow.Selected = true;
         }
     }
 }
