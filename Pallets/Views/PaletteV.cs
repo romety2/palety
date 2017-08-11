@@ -216,7 +216,8 @@ namespace Pallets.Views
 
         private void button6_Click(object sender, EventArgs e)
         {
-
+            PaletteVV name = new PaletteVV((ulong)dataGridView1.Rows[dataGridView1.CurrentCellAddress.Y].Cells[0].Value, data, this);
+            name.Show();
         }
     }
 }

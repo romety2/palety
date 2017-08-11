@@ -86,10 +86,8 @@ namespace Pallets.Views
             label7.Text = ev.DisplayPallets;
             if (maxWidth < label7.Size.Width)
                 maxWidth = label7.Size.Width;
-            maxHeight += label7.Height - temp;
-            temp = label7.Height;
+            temp = label8.Height;
             label8.Text = ev.Comment;
-            maxHeight += label7.Height - temp;
             if (maxWidth < label8.Size.Width)
                 maxWidth = label8.Size.Width;
             maxHeight += label8.Height - temp;

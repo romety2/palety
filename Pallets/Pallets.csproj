@@ -104,6 +104,12 @@
     <Compile Include="Views\EventMV.Designer.cs">
       <DependentUpon>EventMV.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\PaletteVV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\PaletteVV.Designer.cs">
+      <DependentUpon>PaletteVV.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="App.resx">
       <DependentUpon>App.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\EventMV.resx">
       <DependentUpon>EventMV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PaletteVV.resx">
+      <DependentUpon>PaletteVV.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
